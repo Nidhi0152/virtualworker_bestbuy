@@ -39,7 +39,7 @@ services:
     ports:
       - 3000:3000
     healthcheck:
-      test: ["CMD", "wget", "-O", "/dev/null", "-q", "http://order-service:3000/health"]
+      test: ["CMD", "wget", "-O", "/dev/null", "-q", "http://orderservice-bestbuy:3000/health"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -86,7 +86,7 @@ services:
     container_name: 'virtual-customer'
     restart: always
     environment:
-      - ORDER_SERVICE_URL=http://order-service:3000/
+      - ORDER_SERVICE_URL=http://orderservice-bestbuy:3000/
       - ORDERS_PER_HOUR=3600
     networks:
       - backend_services
